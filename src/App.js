@@ -8,12 +8,6 @@ export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
-
-
-  
-
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -29,7 +23,7 @@ export default function App() {
     setValue("");
   }
 
-  
+
 
   return (
     <div className='container'>
@@ -37,8 +31,9 @@ export default function App() {
         <div className='title'>
           <h1>할 일 목록</h1>
         </div>
-        <List todoData={todoData} setTodoData={setTodoData}/>
-        
+        <h1 className="text-3xl font-bold underLine">Hello world!</h1>
+        <List todoData={todoData} setTodoData={setTodoData} />
+
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
 
       </div>
