@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import "./App.css";
-import List from "./components/List";
+import Lists from "./components/Lists";
 import Form from "./components/Form";
 
 export default function App() {
+  const [todoData, setTodoData] = useState([
+    {
+      id: "1",
+      title: "공부하기",
+      completed : true,
+    },
+    {
+      id : "2",
+      title : "청소하기",
+      completed : false
+    }
+  ]);
 
-  const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
@@ -31,7 +42,7 @@ export default function App() {
         <div className="flex justify-between mb-3">
           <h1>할 일 목록</h1>
         </div>
-        <List todoData={todoData} setTodoData={setTodoData} />
+        <Lists todoData={todoData} setTodoData={setTodoData} />
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
     </div>
