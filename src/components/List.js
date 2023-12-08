@@ -14,6 +14,7 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
             return data;
         });
         setTodoData(newTodoData);
+        localStorage.setItem('todoData',JSON.stringify(newTodoData));
     };
 
     const handleEditChange = (event) => {
@@ -30,6 +31,7 @@ const List = React.memo(({ id, title, completed, todoData, setTodoData, provided
             return data;
         })
         setTodoData(newTodoData)
+        localStorage.setItem('todoData',JSON.stringify(newTodoData));
         setIsEditing(false)
     }
 

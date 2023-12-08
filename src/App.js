@@ -3,20 +3,10 @@ import "./App.css";
 import Lists from "./components/Lists";
 import Form from "./components/Form";
 
+const initailTodoData = localStorage.getItem("todoData") ? JSON.parse(localStorage.getItem("todoData")): [];
+
 export default function App() {
-  console.log('App Component')
-  const [todoData, setTodoData] = useState([
-    {
-      id: "1",
-      title: "공부하기",
-      completed: true,
-    },
-    {
-      id: "2",
-      title: "청소하기",
-      completed: false
-    }
-  ]);
+  const [todoData, setTodoData] = useState(initailTodoData);
 
   const [value, setValue] = useState("");
 
@@ -32,16 +22,16 @@ export default function App() {
 
     //원래 있던 할 일에 새로운 할 일 더해주기
     setTodoData((prev) => [...prev, newTodo]);
-    setValue("");
+    localStorage.setItem('todoData',JSON.stringify([...todoData,newTodo]));
   }
   const handleClick = useCallback((id) => {
     let newTodoData = todoData.filter((data) => data.id !== id)
-    console.log('newTododata', newTodoData);
-    setTodoData(newTodoData)
+    setTodoData(newTodoData);
+    localStorage.setItem('todoData',JSON.stringify(newTodoData));
   },[todoData]);
 
   const handleRemoveClick = () => {
-    setTodoData([]);
+    localStorage.setItem('todoData',JSON.stringify([]));
   }
 
   return (
